@@ -1,0 +1,5 @@
+text = input()
+old_word = input()
+new_word = input()
+new_text = text.replace(old_word, new_word)
+print(new_text)
