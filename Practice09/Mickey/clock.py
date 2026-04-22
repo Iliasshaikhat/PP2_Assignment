@@ -6,8 +6,8 @@ screen = pygame.display.set_mode((1280, 960))
 clock = pygame.time.Clock()
 
 clockpng = pygame.image.load("images/clock.PNG")
-leftpng = pygame.image.load("images/lefthand.PNG")   # секундная
-rightpng = pygame.image.load("images/righthand.PNG") # минутная
+leftpng = pygame.image.load("images/lefthand.PNG")
+rightpng = pygame.image.load("images/righthand.PNG")
 
 center = (1280 // 2, 960 // 2)
 
@@ -39,6 +39,6 @@ while running:
             running = False
 
     pygame.display.flip()
-    clock.tick(60)  
+    clock.tick(144)  
 
 pygame.quit()
