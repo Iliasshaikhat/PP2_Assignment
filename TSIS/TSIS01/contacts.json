@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Ilias",
+        "email": "test@mail.com",
+        "birthday": "2005-01-01",
+        "group": "Friends"
+    },
+    {
+        "name": "Alibek",
+        "email": "alibek@mail.com",
+        "birthday": "2005-01-10",
+        "group": "Friends"
+    },
+    {
+        "name": "Dias",
+        "email": "dias@gmail.com",
+        "birthday": "2003-11-05",
+        "group": "Friends"
+    },
+    {
+        "name": "Aruzhan",
+        "email": "aruzhan@mail.com",
+        "birthday": "2004-07-21",
+        "group": "Work"
+    },
+    {
+        "name": "Ilias",
+        "email": "ilias@gmail.com",
+        "birthday": "2005-03-12",
+        "group": "Work"
+    },
+    {
+        "name": "Ilias",
+        "email": "ilias@gmail.com",
+        "birthday": "2005-03-12",
+        "group": "Work"
+    }
+]
