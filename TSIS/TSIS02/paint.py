@@ -33,6 +33,12 @@ start_pos = None
 drawing = False
 last_pos = None
 
+# ТЕКСТ
+text_input = ""
+typing = False
+text_pos = (0, 0)
+font = pygame.font.SysFont(None, 40)
+
 canvas = pygame.Surface((Width, Height))
 canvas.fill(White)
 
@@ -48,6 +54,20 @@ while running:
             running = False
 
         if event.type == pygame.KEYDOWN:
+            # ВВОД ТЕКСТА
+            if mode == "text" and typing:
+                if event.key == pygame.K_BACKSPACE:
+                    text_input = text_input[:-1]
+                elif event.key == pygame.K_RETURN:
+                    # фиксируем текст
+                    text_surface = font.render(text_input, True, color)
+                    canvas.blit(text_surface, text_pos)
+                    typing = False
+                    text_input = ""
+                else:
+                    text_input += event.unicode
+                continue
+
             # brush size
             mods = pygame.key.get_mods()
             if mods & pygame.KMOD_CTRL:
@@ -57,9 +77,9 @@ while running:
                     brush_size = 5
                 elif event.key == pygame.K_3:
                     brush_size = 10
-            else :
+            else:
                 if event.key in keys:
-                     color = keys[event.key]
+                    color = keys[event.key]
 
             # modes
             if event.key == pygame.K_d:
@@ -74,8 +94,8 @@ while running:
                 mode = "line"
             if event.key == pygame.K_f:
                 mode = "fill"
-
-            
+            if event.key == pygame.K_t:  # 🔥 НОВЫЙ РЕЖИМ
+                mode = "text"
 
             # clear
             if event.key == pygame.K_c:
@@ -90,6 +110,12 @@ while running:
             if mode == "fill":
                 x, y = event.pos
                 flood_fill(canvas, x, y, color)
+
+            elif mode == "text":
+                text_pos = event.pos
+                typing = True
+                text_input = ""
+
             else:
                 drawing = True
                 start_pos = event.pos
@@ -133,6 +159,11 @@ while running:
 
         if mode == "line":
             draw_line(preview, color, start_pos, (x, y), brush_size)
+
+    
+    if mode == "text" and typing:
+        text_surface = font.render(text_input + ("|" if pygame.time.get_ticks() % 1000 < 500 else ""), True, color)
+        preview.blit(text_surface, text_pos)
 
     screen.blit(canvas, (0, 0))
     screen.blit(preview, (0, 0))
